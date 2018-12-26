@@ -1,0 +1,35 @@
+server:
+  port: 8072
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:8403/eureka,http://127.0.0.1:8404/eureka
+  instance:
+      prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+      ip-address: 127.0.0.1
+spring:
+  application:
+    name: comsumer2
+  zipkin:  #指定zipkin server的地址
+      base-url:  http://127.0.0.1:9001
+  sleuth:
+    sampler:
+      probability: 1.0 #被zipkin链路追踪记录的机率
+
+
+
+ribbon:
+  ConnecttionTimeOut: 500 #如果超过500毫秒没有建立连接熔断
+  ReadTimeOut: 2000 #建立连接后超过2秒没有响应熔断
+
+#实现熔断后重试机制似乎没有生效是因为Ribbon超时时间设置的是1000ms，而Hystix的超时时间默认也是1000ms，
+#因此重试机制没有被触发，而是先触发了熔断。所以Ribbon的超时时间一定要小于Hystix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 #Hystix的超时时间
+
+

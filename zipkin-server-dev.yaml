@@ -1,0 +1,19 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: zipkin-server
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false #默认为true
+#spring:
+#  sleuth:
+#    sampler:
+#     percentage: 1.0 #测试采样率为1.0,即为全量采集,默认为0.1 这个写在客户端
+
+eureka:
+  client:
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://127.0.0.1:8403/eureka,http://127.0.0.1:8404/eureka
