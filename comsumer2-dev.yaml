@@ -9,7 +9,7 @@ eureka:
       ip-address: 127.0.0.1
 spring:
   application:
-    name: comsumer222
+    name: comsumer2223
   zipkin:  #指定zipkin server的地址
       base-url:  http://127.0.0.1:9001
   sleuth:
