@@ -30,6 +30,6 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 6000 #Hystix的超时时间
+            timeoutInMilliseconds: 6002 #Hystix的超时时间
 
 
