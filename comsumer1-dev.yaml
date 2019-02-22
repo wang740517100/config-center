@@ -1,5 +1,5 @@
 server:
-  port: 8077
+  port: 8071
 eureka:
   client:
     service-url: # EurekaServer地址
@@ -31,4 +31,5 @@ feign:
     response:
       enabled: true # 开启响应压缩
 
-
+hello:
+  wangkfmytest
